@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<h3> {{ u_email }}'s time journal </h3> 
+
+<div id="hour-circle">
+  <div class="circle-text">
+    <div id="Change_circle_text" class="circle-text-upper">{{ totalTime }}</div>
+    <div class="circle-text-lower">Hours</div>
+  </div>
+</div>
+<button id="current_week_show">Current Week</button>
+<button id="current_year_show">Year</button>
+<button id="time_journal_show">Time Journal</button>
+<!-- <button id="">Your statestics</button> -->
+
+
+
+<!-- Section -->
+<section id="first" class="main special">			
+    
+    
+
+
+
+    <div id="bokeh_graph"></div>
+    <br>
+    <a href="#ex3" rel="modal:open">
+      <input type="button" value="Include/Exclude" class="primary" id="modal_statestic" />
+    </a>
+
+    <div id="buffer"></div>
+    <div id="buffer"></div>
+    <div id="month_show">
+      <h3>2019</h3>
+      <div id="monthbuttons">
+        {% for month in months %}
+          <button class="month_buttons" id="{{ month }}" value="{{ month }}">{{ month }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <!-- Modal HTML embedded directly into document -->
+    <div id="ex3" class="modal" style="max-height: 9999px; overflow:auto; overflow-x: hidden;">    
+        <form method="GET">   
+          {% csrf_token %}
+          <h3>Include / Exclude</h3>
+          <br>
+          <h6>Categories of work you done: </h6>
+          <ul style="list-style-type:none; text-align: left;">
+          {% for category in user_categories %}
+                <li>
+                  <input type="checkbox" class="Checkbox_category" value="{{ category }}" id="{{ category }}" name="checkboxCategory" checked>
+                  <label for="{{ category }}">{{ category }}</label>
+                </li>
+          {% endfor %}
+          </ul> 
+
+
+          <h6>Projects you have worked on: </h6>
+          <ul style="list-style-type:none; text-align: left;">
+          {% for product in user_products %}
+                  <li>
+                    <input type="checkbox" class="Checkbox_product"  id="{{ product }}" value="{{ product }}" name="checkboxProduct" checked>
+                    <label for="{{ product }}">{{ product }}</label>
+                  </li>
+          {% endfor %}
+          </ul> 
+          <button id="submit_statestic_current_week">Get statestic</button>
+        </form> 
+    </div>
+
+</section>
+<br>
+<br>
+
+
+{% endblock %}

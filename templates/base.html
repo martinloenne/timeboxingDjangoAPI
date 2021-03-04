@@ -1,0 +1,137 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>{% block title %}WorkOn{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+
+  <link href="http://cdn.pydata.org/bokeh/release/bokeh-1.3.4.min.css" rel="stylesheet" type="text/css">
+  <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.3.4.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'assets/css/jquery.modal.min.css' %}" />
+
+  <audio id="myAudio">
+    <source src="{% static 'assets/sound/sound_01.wav' %}" type="audio/wav">
+  </audio>
+
+</head>
+
+
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Header -->
+          <header id="header">
+            <a href="{% url 'home' %}" id="logo_top" class="logo">WorkOn</a>
+            {% if user.is_authenticated %}
+                <nav><a href="{% url 'profile' user.email %}" id="journal_button_top" class="button fit small">Time journal</a></nav>
+            {% endif %}
+            <nav>
+              <a href="#menu">Menu</a> 
+            </nav>
+
+          </header>
+
+
+
+        <!-- Nav -->
+          <nav id="menu">
+            <ul class="links">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="w3-right w3-button w3-white">Logout</a></li></br>
+                <li><a></a><b>Current timezone: </b><p id="current_timezone">{{ timezone_user }}</p></li>
+                
+                <form method="POST" class="combined">
+                	{% csrf_token %}
+                  <select id="choose_timezone" name="">
+                    {% for timezone in timezones %}
+                      <option value="{{ timezone }}">{{ timezone }}</option>
+                    {% endfor %}
+                  </select>
+                  <input type="button" value="Change" class="primary" id="change_timezone"/>
+                </form>
+
+                <li><a href="{% url 'profile' user.email %}">Time Journal</a></li>
+
+                <li><a>
+                <p>Public or private profile:</p>
+                <form method="GET" class="combined">
+                {% csrf_token %}
+                  <select id="choose_visibility" name="">
+                    {% if visibility == "public" %}
+                     <option value="public" selected>Public</option>
+                     <option value="private">Private</option>
+                    {% endif %}
+                    {% if visibility == "private" %}
+                     <option value="public">Public</option>
+                     <option value="private" selected>Private</option>
+                    {% endif %}
+                  </select>
+                </form>
+                </a></li>
+
+                <div class="slidecontainer">                
+                  <p>Volume:</p>
+                  <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                  <div id="volume_server">{{ volume }}</div>
+                </div>
+
+            {% endif %}
+            </ul>
+          </nav>
+
+
+
+          <!-- Section -->
+          <section class="main special">
+
+
+            {% block content %}
+
+            {% endblock %}
+
+
+        <!-- Footer -->
+          <footer id="footer">
+            <p class="copyright">Created by Martin Lønne through a lot of long nights and tons of coffee.</p>
+            <ul class="icons">
+              <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon brands fa-facebook"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+              <li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+              <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+          </footer>
+
+      </div>
+
+
+
+
+
+
+
+
+
+  </body>
+      <!-- Scripts -->
+      <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+      <script src="{% static 'assets/js/browser.min.js' %}"></script>
+      <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+      <script src="{% static 'assets/js/util.js' %}"></script>
+      <script src="{% static 'assets/js/main.js' %}"></script>
+      <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+      <script src="{% static 'assets/js/popper.min.js' %}"></script>
+      <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+      
+      <script src="{% static 'frontPageJS.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+      <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-1.3.4.min.js"></script>
+</html>

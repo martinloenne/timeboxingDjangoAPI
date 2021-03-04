@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<span class="countdown"></span>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<h2>{{ msg }}{{ user.username }}</h2>
+<!-- Section 	<li><strong>Data:</strong> {{ posts }}</li>-->
+
+
+
+
+
+
+
+
+
+
+<p>
+	What project are you working on?
+</p>
+
+
+<form method="GET" class="combined">
+	<select name="selectProducts" id="selectProducts"></select>
+	<input type="button" value="Add new project" class="primary" id="modal_project"/>
+</form>
+
+
+
+<p>
+	What type of work are you doing?
+</p>
+
+<form method="GET" class="combined">
+	<select name="selectCategory" id="selectCategory"></select>
+	<input type="button" value="Add new category" class="primary" id="modal_category"/>
+</form>
+
+
+
+<p>
+	How long should the work session be?
+</p>
+
+<div id="buttons">
+	<button id="answer1">5</button>
+	<button id="answer2">10</button>
+	<button id="answer3">15</button>
+	<button id="answer4">25</button>
+	<button id="answer5">Infinite</button>
+	<input type="text" id="timebox_time_input" placeholder="min"/>
+</div>
+
+<button type="button" id="btn_startTimebox" class="button primary">Start timebox</button>
+<button id="breakBtn" type="button" name="button" class="button primary">Break</button>
+<button id="stopBtn" type="button" name="button" class="button primary">Interrupt</button>
+<!-- <button id="infinite_stop">Infinite stop timeboxing</button>-->
+
+<div id="buffer"></div>
+
+
+
+
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal">
+		<form method="POST">
+			{% csrf_token %}
+			<div class="form-group">
+				<h4>Write down your new project</h4>
+				<input type="text" class="form-control" id="product_new_name" placeholder="Write a new project you are working on"/>
+			</div>
+			<br />
+			<div class="form-group">
+				<button type="button" id="btn_submitProduct" class="button primary">Submit</button>
+			</div>
+		</form>
+</div>
+
+<div id="ex2" class="modal">
+<form method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<h4>What category of work do you need?</h4>
+		<input type="text" class="form-control" id="category_new_name" placeholder="Write a new category"/>
+	</div>
+	<br />
+	<div class="form-group">
+		<button type="button" id="btn_submitCategory" class="button primary">Submit</button>
+	</div>
+</form>
+</div>
+
+<div class="modal-interupt">
+	<div class="modal-content-interupt">
+		<p>You want to save your session data?</p>
+		<button id="modal-btn_yes">Sure</button>
+		<button id="modal-btn_no">Nope</button>
+	</div>
+</div>
+
+
+<!-- Link to open the modal -->
+<a href="#ex1" id="modal_product_link" rel="modal:open" hidden></a>
+<a href="#ex2" id="modal_category_link" rel="modal:open" hidden></a>
+
+
+
+
+<!-- Section -->
+<section id="first" class="main special">			
+	<div id="timeboxContainer" class="flex-container">
+	</div>
+
+
+
+
+
+
+
+</section>
+
+{% endblock %}

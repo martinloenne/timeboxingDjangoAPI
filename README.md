@@ -4,10 +4,11 @@ This is a old project, the first web app I ever did, and therefore also not upda
 I had this deployed on a VPS server before, where it was used by me and my group during university to track time spent on projects and what we worked on. We could then track how much time was spent different categories.
 
 
-## Timeboxing Frontend/Backend in Django w/ API
+## What is it?
 
 This project was a timeboxing service, where users could do timeboxing, and then the timeboxing session would be saved and statestics could be viewed in a time journal.
 It also had the ability to choose what product and category of work you were working on during the timeboxing session.
+Also it had user profiles with slug urls so you could view timeboxing statestics.
 
 ## Features
 - Authentication.

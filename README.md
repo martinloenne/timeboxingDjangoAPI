@@ -12,6 +12,9 @@ It also had the ability to choose what product and category of work you were wor
 ## Features
 - Authentication.
 - API CRUD.
+- Views through Django.
+- Ajax.
+- Vanilla JS used to do the visualization.
 - Timezones.
 - Timeboxing saved as a session with information (product, category) what was worked on.
 - Adding new categories and products.

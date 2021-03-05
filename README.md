@@ -12,7 +12,8 @@ It also had the ability to choose what product and category of work you were wor
 - Authentication.
 - API CRUD.
 - Timezones.
-- Timeboxing saved as a session with information what was worked on.
+- Timeboxing saved as a session with information (product, category) what was worked on.
+- Adding new categories and products.
 - Timeboxing visualization.
 - Break session
 - Statestics with these sessions.

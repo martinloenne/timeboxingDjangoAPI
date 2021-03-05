@@ -20,3 +20,4 @@ It also had the ability to choose what product and category of work you were wor
 - Slug URL to the users profile where statestics could be viewed.
 - Profile could be set to private or public.
 - Volume and sound integration.
+- SQLlite database.

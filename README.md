@@ -15,6 +15,7 @@ It also had the ability to choose what product and category of work you were wor
 - Timeboxing saved as a session with information (product, category) what was worked on.
 - Adding new categories and products.
 - Timeboxing visualization.
+- Ability to see all the sessions done that day, also after refresh.
 - Break session
 - Statestics with these sessions.
 - Slug URL to the users profile where statestics could be viewed.

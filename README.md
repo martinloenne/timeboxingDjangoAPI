@@ -1,6 +1,6 @@
 # Timeboxing and Statistics     -    Frontend/Backend in Django w/ API
 
-This is a old project, the first web application I ever did, and therefore also not updated or up-to standard.
+The first web application I ever did, and therefore also needs an update soon.
 I had this deployed on a VPS server before, where it was used by me and my student group during university to track time spent on projects and what we worked on. We could then track how much time was spent different categories.
 
 
